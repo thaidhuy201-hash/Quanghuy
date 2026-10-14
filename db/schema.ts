@@ -1,0 +1,6 @@
+import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core';
+export const attempts = sqliteTable('attempts', { key: text('key').primaryKey(), count: integer('count').notNull(), until: integer('until').notNull() });
+export const users = sqliteTable('users', { username: text('username').primaryKey(), hash: text('hash').notNull(), salt: text('salt').notNull(), role: text('role').notNull(), active: integer('active').notNull().default(1) });
+export const sessions = sqliteTable('sessions', { token: text('token').primaryKey(), username: text('username').notNull(), expires: integer('expires').notNull() });
+export const records = sqliteTable('records', { id: text('id').primaryKey(), day: text('day').notNull(), type: text('type').notNull(), method: text('method').notNull(), amount: integer('amount').notNull(), note: text('note').notNull(), username: text('username').notNull(), created: text('created').notNull() });
+export const closings = sqliteTable('closings', { id: text('id').primaryKey(), day: text('day').notNull(), opening: integer('opening').notNull(), actual: integer('actual').notNull(), expected: integer('expected').notNull(), username: text('username').notNull(), created: text('created').notNull() });
